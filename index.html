@@ -28,12 +28,13 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-4" id="city-column">
 
                 <div id="search-cities">
-                    <input type="text" placeholder="Riverside, CA" name="search" id="search-bar">
+                    <p>Please enter city name, state code (ex. CA) and country code (ex. US)</p>
+                    <input type="text" placeholder="Indio, CA, US" name="search" id="search-bar">
                     <button type="submit"><i class="fa fa-search" id="search-button"></i></button>
                 </div>
                 
@@ -51,8 +52,12 @@
                     <p id="uvi-today">UV Index: </p>
                 </div>
 
-                <div class="row" id="five-day-weather">
-                    
+                <div class="row w=100" id="five-day-weather">
+                    <div class=card id="day1"></div>
+                    <div class=card id="day2"></div>
+                    <div class=card id="day3"></div>
+                    <div class=card id="day4"></div>
+                    <div class=card id="day5"></div>
                 </div>
             </div>
             

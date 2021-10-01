@@ -15,12 +15,14 @@ var geoLon = [];
 //When search button is clicked, search for that city
 $("#search-button").click(function(){
     var cityName = $("#search-bar").val().trim();
+    console.log(cityName);
 
     $.ajax({
         url: geoUrl + cityName + searchLimit + apiKey,
         method: 'GET',
         datatype: 'JSON',
     }).then(function(geoData){
+        console.log(geoData);
         geoLat.length = 0;
         geoLon.length = 0;
     
