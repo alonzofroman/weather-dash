@@ -11,10 +11,12 @@ var inFar ='&units=imperial'
 var apiKey = '&appid=f4fa96020f2282301cd8312fc675da98';
 var geoLat = [];
 var geoLon = []; 
+var cityName = [];
 
 //When search button is clicked, search for that city
 $("#search-button").click(function(){
-    var cityName = $("#search-bar").val().trim();
+    cityName.length = 0;
+    cityName.push($("#search-bar").val().trim());
     console.log(cityName);
 
     $.ajax({
@@ -39,14 +41,27 @@ $("#search-button").click(function(){
             var currentHumid = oneData.current.humidity;
             var currentWind = oneData.current.wind_speed;
             var currentUvi = oneData.current.uvi;
+            console.log(oneData);
 
-            $("#city-today").append(cityName);
-            $("#temp-today").append(currentTemp);
-            $("#humid-today").append(currentHumid);
-            $("#wind-today").append(currentWind);
-            $("#uvi-today").append(currentUvi);
+            $("#city-today").text(cityName);
+            $("#temp-today").text('Temperature: ' + currentTemp);
+            $("#humid-today").text('Humidity: ' + currentHumid);
+            $("#wind-today").text('Wind Speed: ' + currentWind);
+            $("#uvi-today").text('UV Index: ' + currentUvi);
             
+            var day1Temp = oneData.daily[1].temp.day;
+            var day1Humid = oneData.daily[1].humidity;
+
+
+            $("#day1temp").text('Temperature: ' + day1Temp);
+            $("#day1humid").text('Humidity: ' + day1Humid);
+
         })
     })
 
 })
+
+
+function displayCurrent() {
+
+}
