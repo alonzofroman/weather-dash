@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4" id="city-column">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search" id="search-button"></i></button>
+            </div>
+
+            <div class="col-8" id="weather-column">
+                <div class="card" id="today-weather">
+                    <h3 id="city-today">Today</h3>
+                    <p id="temp-today">Temperature: </p>
+                    <p id="humid-today">Humidity: </p>
+                    <p id="wind-today">Wind Speed: </p>
+                    <p id="uvi-today">UV Index: </p>
+                </div>
+
+                <div class="row" id="five-day-weather">
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+
+
+<footer class="footer">
+    <h6>Made by Alonzo Roman</h6>
+</footer>
+
+    <script src="assets/script.js"></script>
+
+</body>
+</html>
