@@ -33,7 +33,17 @@ $("#search-button").click(function(){
             url: oneCallUrl + geoLat + lonPar + geoLon + inFar + apiKey,
             method: 'GET',
         }).then(function(oneData){
-            console.log(oneData.current.temp);
+            var currentTemp = oneData.current.temp;
+            var currentHumid = oneData.current.humidity;
+            var currentWind = oneData.current.wind_speed;
+            var currentUvi = oneData.current.uvi;
+
+            $("#city-today").append(cityName);
+            $("#temp-today").append(currentTemp);
+            $("#humid-today").append(currentHumid);
+            $("#wind-today").append(currentWind);
+            $("#uvi-today").append(currentUvi);
+            
         })
     })
 
