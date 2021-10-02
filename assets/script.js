@@ -13,12 +13,27 @@ var geoLat = [];
 var geoLon = []; 
 var cityName = [];
 
-//When search button is clicked, search for that city
-$("#search-button").click(function(){
+
+//When search button is clicked, generate variables to search for that city
+
+$("#search-button").click(function() {
+    
     cityName.length = 0;
     cityName.push($("#search-bar").val().trim());
-    console.log(cityName);
 
+    localStorage.setItem("city-names", cityName);
+    secondStep();
+})
+
+//Similar process of setting up API request for past history buttons
+// function historyRequest() {
+
+//     cityName.length = 0;
+// 
+
+
+
+function secondStep() {
     //After city name is entered, find lat and lon
     $.ajax({
         url: geoUrl + cityName + searchLimit + apiKey,
@@ -82,10 +97,12 @@ $("#search-button").click(function(){
             var day5Humid = oneData.daily[5].humidity;
             $("#day5temp").text('Temp: ' + day5Temp);
             $("#day5humid").text('Humidity: ' + day5Humid);
-
-
         })
     })
+}
 
-})
+
+// $("document").ready() {
+
+// }
 
