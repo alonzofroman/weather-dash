@@ -11,6 +11,11 @@
 }
 
 
+#uvi-today {
+    padding: 3px;
+    border-radius: 15px;
+}
+
 .footer {
     background-color: var(--blue);
     color: var(--black);

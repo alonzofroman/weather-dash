@@ -30,7 +30,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4" id="city-column">
+            <div class="col-3" id="city-column">
 
                 <div id="search-cities">
                     <p>Please enter city name, state code (ex. CA) and country code (ex. US)</p>
@@ -38,18 +38,18 @@
                     <button type="submit"><i class="fa fa-search" id="search-button"></i></button>
                 </div>
                 
-                <div id="saved-cities">
+                <div class="col-12 btn-group-vertical" id="saved-cities">
 
                 </div>
             </div>
 
-            <div class="col-8" id="weather-column">
+            <div class="col-9" id="weather-column">
                 <div class="card" id="today-weather">
-                    <h3 id="city-today"></h3>
+                    <h3 id="city-today"> </h3>
                     <p id="temp-today">Temperature: </p>
                     <p id="humid-today">Humidity: </p>
                     <p id="wind-today">Wind Speed: </p>
-                    <p id="uvi-today">UV Index: </p>
+                    <p id="uvi-current">UV Index: <span id="uvi-today"></span></p>
                 </div>
 
                 <div class="row w=100" id="five-day-weather">
@@ -89,9 +89,9 @@
 
 
 
-<footer class="footer">
+<!-- <footer class="footer">
     <h6>Made by Alonzo Roman</h6>
-</footer>
+</footer> -->
 
     <script src="assets/script.js"></script>
 

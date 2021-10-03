@@ -46,6 +46,9 @@ function setCityList() {
     if (cityHistory !== null) {
         localStorage.setItem('city-names', JSON.stringify(cityHistory));
     }
+    if (cityHistory.length > 6) {
+        cityHistory.pop();
+    }
 }
 
 //Create and append city history buttons
@@ -53,7 +56,7 @@ function renderHistoryButtons() {
     $("#saved-cities").empty();
     for (i=0; i<cityHistory.length && i<6;  i++) {
         var newButton = $('<button/>', {
-            class: 'btn btn-outline-secondary',
+            class: 'btn btn-outline-secondary w=100',
             type: 'button',
             id: 'history-button',
             text: cityHistory[i],
@@ -103,7 +106,24 @@ function secondStep() {
             $("#temp-today").text('Temperature: ' + currentTemp);
             $("#humid-today").text('Humidity: ' + currentHumid);
             $("#wind-today").text('Wind Speed: ' + currentWind);
-            $("#uvi-today").text('UV Index: ' + currentUvi);
+            $("#uvi-today").text(currentUvi);
+
+            //uvi background color
+            if (currentUvi < 3) {
+                $("#uvi-today").css("background-color", "green");
+            }
+            else if (currentUvi > 3 && currentUvi > 6) {
+                $("#uvi-today").css("background-color", "yellow");
+            }
+            else if(currentUvi > 6 && currentUvi < 8) {
+                $("#uvi-today").css("background-color", "orange");
+            }
+            else if (currentUvi > 8 && currentUvi < 11) {
+                $("#uvi-today").css("background-color", "red");
+            }
+            else if (currentUvi > 11) {
+                $("#uvi-today").css("background-color", "purple");
+            }
             
 
             //Display temp and humidity for next day
