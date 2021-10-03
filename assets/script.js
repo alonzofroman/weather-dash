@@ -82,7 +82,9 @@ function secondStep() {
         url: geoUrl + cityName + searchLimit + apiKey,
         method: 'GET',
         datatype: 'JSON',
-    }).then(function(geoData){
+    })
+    
+    .done(function(geoData){
         geoLat.length = 0;
         geoLon.length = 0;
         geoLat.push(geoData[0].lat);
@@ -94,7 +96,12 @@ function secondStep() {
         $.ajax({
             url: oneCallUrl + geoLat + lonPar + geoLon + inFar + apiKey,
             method: 'GET',
-        }).then(function(oneData){
+        }).fail(function() {
+            alert("Incorrect entry, please ensure proper spelling of city, and correct state and country codes");
+            return;
+        }) 
+        
+        .done(function(oneData){
             var currentTemp = oneData.current.temp;
             var currentHumid = oneData.current.humidity;
             var currentWind = oneData.current.wind_speed;
@@ -107,6 +114,9 @@ function secondStep() {
             $("#humid-today").text('Humidity: ' + currentHumid);
             $("#wind-today").text('Wind Speed: ' + currentWind);
             $("#uvi-today").text(currentUvi);
+
+            renderCurrentDate();
+            
 
             //uvi background color
             if (currentUvi < 3) {
@@ -159,5 +169,27 @@ function secondStep() {
     })
 }
 
+//Function to render dates
 
+function renderCurrentDate() {
+    var currentDate = moment();
+    $("#date-today").text("(" + currentDate.format('L') + ")")
+
+    var date1 = currentDate.clone().add(1, 'days');
+    $("#day1date").text(date1.format('L'));
+
+    var date2 = currentDate.clone().add(2, 'days');
+    $("#day2date").text(date2.format('L'));
+
+    var date3 = currentDate.clone().add(3, 'days');
+    $("#day3date").text(date3.format('L'));
+
+    var date4 = currentDate.clone().add(4, 'days');
+    $("#day4date").text(date4.format('L'));
+
+    var date5 = currentDate.clone().add(5, 'days');
+    $("#day5date").text(date5.format('L'));
+
+
+}
 
