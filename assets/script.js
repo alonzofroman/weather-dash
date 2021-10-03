@@ -135,6 +135,33 @@ function secondStep() {
                 $("#uvi-today").css("background-color", "purple");
             }
             
+            //Function to render icons
+            var todayIcon = oneData.current.weather[0].icon;
+            // console.log(todayIcon);
+            todayIconUrl = "http://openweathermap.org/img/w/" + todayIcon + ".png";
+            // console.log(todayIconUrl);
+            $("#today-icon").attr('src', todayIconUrl);
+
+            var day1Icon = oneData.daily[1].weather[0].icon;
+            day1IconUrl =  "http://openweathermap.org/img/w/" + day1Icon + ".png";
+            $("#day1Icon").attr('src', day1IconUrl);
+
+            var day2Icon = oneData.daily[2].weather[0].icon;
+            day2IconUrl =  "http://openweathermap.org/img/w/" + day2Icon + ".png";
+            $("#day2Icon").attr('src', day2IconUrl);
+
+            var day3Icon = oneData.daily[3].weather[0].icon;
+            day3IconUrl =  "http://openweathermap.org/img/w/" + day3Icon + ".png";
+            $("#day3Icon").attr('src', day3IconUrl);
+
+            var day4Icon = oneData.daily[4].weather[0].icon;
+            day4IconUrl =  "http://openweathermap.org/img/w/" + day4Icon + ".png";
+            $("#day4Icon").attr('src', day4IconUrl);
+
+            var day5Icon = oneData.daily[5].weather[0].icon;
+            day5IconUrl =  "http://openweathermap.org/img/w/" + day5Icon + ".png";
+            $("#day5Icon").attr('src', day5IconUrl);
+
 
             //Display temp and humidity for next day
             var day1Temp = oneData.daily[1].temp.day;
@@ -189,7 +216,8 @@ function renderCurrentDate() {
 
     var date5 = currentDate.clone().add(5, 'days');
     $("#day5date").text(date5.format('L'));
-
-
 }
+
+
+
 
