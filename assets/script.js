@@ -3,36 +3,76 @@
 // https://api.openweathermap.org/data/2.5/onecall?lat= {lat} &lon= {lon}&exclude={part} &appid={API key}
 
 //Variables to construct API requests
-var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
-var oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=';
-var lonPar = '&lon=';
-var searchLimit = '&limit=1';
-var inFar ='&units=imperial'
-var apiKey = '&appid=f4fa96020f2282301cd8312fc675da98';
+const geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
+const oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=';
+const lonPar = '&lon=';
+const searchLimit = '&limit=1';
+const inFar ='&units=imperial'
+const apiKey = '&appid=f4fa96020f2282301cd8312fc675da98';
+
+//Empty arrays to fill with variables and empty later
 var geoLat = [];
 var geoLon = []; 
 var cityName = [];
-
+var cityHistory = [];
 
 //When search button is clicked, generate variables to search for that city
 
 $("#search-button").click(function() {
-    
+
     cityName.length = 0;
     cityName.push($("#search-bar").val().trim());
-
-    localStorage.setItem("city-names", cityName);
+    
+    grabCityList();
+    
+    cityHistory.unshift(cityName); 
+    setCityList();
+    renderHistoryButtons();
+    // console.log(localStorage.getItem("city-names"));
     secondStep();
 })
 
-//Similar process of setting up API request for past history buttons
-// function historyRequest() {
 
-//     cityName.length = 0;
-// 
+//Function to gather city history from local storage
+function grabCityList() {
+    if (localStorage.getItem("city-names") !== null) {
+        cityHistory.length = 0;
+    cityHistory = JSON.parse(localStorage.getItem("city-names"));
+    }
+}
+
+//Function to store city history
+function setCityList() {
+    if (cityHistory !== null) {
+        localStorage.setItem('city-names', JSON.stringify(cityHistory));
+    }
+}
+
+//Create and append city history buttons
+function renderHistoryButtons() {
+    $("#saved-cities").empty();
+    for (i=0; i<cityHistory.length && i<6;  i++) {
+        var newButton = $('<button/>', {
+            class: 'btn btn-outline-secondary',
+            type: 'button',
+            id: 'history-button',
+            text: cityHistory[i],
+        })
+        //Add button to page
+        $("#saved-cities").append(newButton);
+    }
+}
 
 
+//Gather local storage on page refresh
+$(document).ready(function(){
+    if (localStorage.getItem("city-names") !== null) {
+        grabCityList();
+        renderHistoryButtons();        
+    }
+})
 
+// After lat and lon are generated, perform One Call API request
 function secondStep() {
     //After city name is entered, find lat and lon
     $.ajax({
@@ -40,13 +80,11 @@ function secondStep() {
         method: 'GET',
         datatype: 'JSON',
     }).then(function(geoData){
-        console.log(geoData);
         geoLat.length = 0;
         geoLon.length = 0;
-    
         geoLat.push(geoData[0].lat);
-
         geoLon.push(geoData[0].lon);
+
     }).then(function(){
         
         //With lat and lon variables, find the city from the city name search in One Call API
@@ -102,7 +140,4 @@ function secondStep() {
 }
 
 
-// $("document").ready() {
-
-// }
 
