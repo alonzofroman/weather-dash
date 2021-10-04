@@ -59,12 +59,21 @@ function renderHistoryButtons() {
             class: 'btn btn-outline-secondary w=100',
             type: 'button',
             id: 'history-button',
+            value: cityHistory[i],
             text: cityHistory[i],
         })
         //Add button to page
         $("#saved-cities").append(newButton);
     }
 }
+
+//Function to use history buttons to search
+$(document).on("click", "#history-button", function() {
+    console.log("button is clicked");
+    cityName.length = 0;
+    cityName.push($(this).val());
+    secondStep();
+})
 
 
 //Gather local storage on page refresh
@@ -140,27 +149,27 @@ function secondStep() {
             // console.log(todayIcon);
             todayIconUrl = "http://openweathermap.org/img/w/" + todayIcon + ".png";
             // console.log(todayIconUrl);
-            $("#today-icon").attr('src', todayIconUrl);
+            $("#today-icon").attr('src', todayIconUrl, 'alt', "weather icon");
 
             var day1Icon = oneData.daily[1].weather[0].icon;
             day1IconUrl =  "http://openweathermap.org/img/w/" + day1Icon + ".png";
-            $("#day1Icon").attr('src', day1IconUrl);
+            $("#day1Icon").attr('src', day1IconUrl, 'alt', "weather icon");
 
             var day2Icon = oneData.daily[2].weather[0].icon;
             day2IconUrl =  "http://openweathermap.org/img/w/" + day2Icon + ".png";
-            $("#day2Icon").attr('src', day2IconUrl);
+            $("#day2Icon").attr('src', day2IconUrl, 'alt', "weather icon");
 
             var day3Icon = oneData.daily[3].weather[0].icon;
             day3IconUrl =  "http://openweathermap.org/img/w/" + day3Icon + ".png";
-            $("#day3Icon").attr('src', day3IconUrl);
+            $("#day3Icon").attr('src', day3IconUrl, 'alt', "weather icon");
 
             var day4Icon = oneData.daily[4].weather[0].icon;
             day4IconUrl =  "http://openweathermap.org/img/w/" + day4Icon + ".png";
-            $("#day4Icon").attr('src', day4IconUrl);
+            $("#day4Icon").attr('src', day4IconUrl, 'alt', "weather icon");
 
             var day5Icon = oneData.daily[5].weather[0].icon;
             day5IconUrl =  "http://openweathermap.org/img/w/" + day5Icon + ".png";
-            $("#day5Icon").attr('src', day5IconUrl);
+            $("#day5Icon").attr('src', day5IconUrl, 'alt', "weather icon");
 
 
             //Display temp and humidity for next day
@@ -168,30 +177,35 @@ function secondStep() {
             var day1Humid = oneData.daily[1].humidity;
             $("#day1temp").text('Temp: ' + day1Temp);
             $("#day1humid").text('Humidity: ' + day1Humid);
+            $("#day1").css('background-color', "lightblue");
 
             //Two days ahead
             var day2Temp = oneData.daily[2].temp.day;
             var day2Humid = oneData.daily[2].humidity;
             $("#day2temp").text('Temp: ' + day2Temp);
             $("#day2humid").text('Humidity: ' + day2Humid);
+            $("#day2").css('background-color', "lightblue");
 
             //Three days ahead
             var day3Temp = oneData.daily[3].temp.day;
             var day3Humid = oneData.daily[3].humidity;
             $("#day3temp").text('Temp: ' + day3Temp);
             $("#day3humid").text('Humidity: ' + day3Humid);
+            $("#day3").css('background-color', "lightblue");
 
             //Four days ahead
             var day4Temp = oneData.daily[4].temp.day;
             var day4Humid = oneData.daily[4].humidity;
             $("#day4temp").text('Temp: ' + day4Temp);
             $("#day4humid").text('Humidity: ' + day4Humid);
+            $("#day4").css('background-color', "lightblue");
 
             //Five days ahead
             var day5Temp = oneData.daily[5].temp.day;
             var day5Humid = oneData.daily[5].humidity;
             $("#day5temp").text('Temp: ' + day5Temp);
             $("#day5humid").text('Humidity: ' + day5Humid);
+            $("#day5").css('background-color', "lightblue");
         })
     })
 }
@@ -217,7 +231,6 @@ function renderCurrentDate() {
     var date5 = currentDate.clone().add(5, 'days');
     $("#day5date").text(date5.format('L'));
 }
-
 
 
 
