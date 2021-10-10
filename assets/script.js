@@ -3,7 +3,7 @@
 // https://api.openweathermap.org/data/2.5/onecall?lat= {lat} &lon= {lon}&exclude={part} &appid={API key}
 
 //Variables to construct API requests
-const geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
+const geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=';
 const oneCallUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=';
 const lonPar = '&lon=';
 const searchLimit = '&limit=1';
@@ -147,28 +147,28 @@ function secondStep() {
             //Function to render icons
             var todayIcon = oneData.current.weather[0].icon;
             // console.log(todayIcon);
-            todayIconUrl = "http://openweathermap.org/img/w/" + todayIcon + ".png";
+            todayIconUrl = "https://openweathermap.org/img/w/" + todayIcon + ".png";
             // console.log(todayIconUrl);
             $("#today-icon").attr('src', todayIconUrl, 'alt', "weather icon");
 
             var day1Icon = oneData.daily[1].weather[0].icon;
-            day1IconUrl =  "http://openweathermap.org/img/w/" + day1Icon + ".png";
+            day1IconUrl =  "https://openweathermap.org/img/w/" + day1Icon + ".png";
             $("#day1Icon").attr('src', day1IconUrl, 'alt', "weather icon");
 
             var day2Icon = oneData.daily[2].weather[0].icon;
-            day2IconUrl =  "http://openweathermap.org/img/w/" + day2Icon + ".png";
+            day2IconUrl =  "https://openweathermap.org/img/w/" + day2Icon + ".png";
             $("#day2Icon").attr('src', day2IconUrl, 'alt', "weather icon");
 
             var day3Icon = oneData.daily[3].weather[0].icon;
-            day3IconUrl =  "http://openweathermap.org/img/w/" + day3Icon + ".png";
+            day3IconUrl =  "https://openweathermap.org/img/w/" + day3Icon + ".png";
             $("#day3Icon").attr('src', day3IconUrl, 'alt', "weather icon");
 
             var day4Icon = oneData.daily[4].weather[0].icon;
-            day4IconUrl =  "http://openweathermap.org/img/w/" + day4Icon + ".png";
+            day4IconUrl =  "https://openweathermap.org/img/w/" + day4Icon + ".png";
             $("#day4Icon").attr('src', day4IconUrl, 'alt', "weather icon");
 
             var day5Icon = oneData.daily[5].weather[0].icon;
-            day5IconUrl =  "http://openweathermap.org/img/w/" + day5Icon + ".png";
+            day5IconUrl =  "https://openweathermap.org/img/w/" + day5Icon + ".png";
             $("#day5Icon").attr('src', day5IconUrl, 'alt', "weather icon");
 
 
